@@ -20,7 +20,7 @@ from utils import (
 )
 
 
-def render(model, preprocessor) -> None:
+def render(model) -> None:
     st.html(
         """
         <div class="section-card">
@@ -28,7 +28,8 @@ def render(model, preprocessor) -> None:
             <p style="color:#64748B; margin-bottom:0;">
                 Le fichier CSV doit contenir une ligne par garantie et les colonnes suivantes :
                 <code>age_vehicule_annees</code>, <code>duree_garantie_jours</code>,
-                <code>places</code>, <code>puissance</code>, <code>categorie_mère</code>,
+                <code>places</code>, <code>puissance</code>, <code>valeur_neuve</code>,
+                <code>valeur_venale</code>, <code>categorie_mère</code>,
                 <code>garantie</code>, <code>segment</code>, <code>typeinter</code>,
                 <code>ville</code>, <code>marque</code>.
             </p>
@@ -101,7 +102,7 @@ def render(model, preprocessor) -> None:
 
     with st.spinner(f"Calcul de {len(working_df)} prime(s)…"):
         try:
-            predictions = predict_premium(model, preprocessor, working_df)
+            predictions = predict_premium(model, working_df)
         except Exception as exc:  # noqa: BLE001 - affichage utilisateur
             st.error(f"Erreur lors du calcul des prédictions : {exc}", icon=":material/error:")
             return
@@ -138,6 +139,8 @@ def render(model, preprocessor) -> None:
             "duree_garantie_jours": st.column_config.NumberColumn("Durée garantie (j)"),
             "places": st.column_config.NumberColumn("Places"),
             "puissance": st.column_config.NumberColumn("Puissance (CV)"),
+            "valeur_neuve": st.column_config.NumberColumn("Valeur à neuf (FCFA)", format="%.0f"),
+            "valeur_venale": st.column_config.NumberColumn("Valeur vénale (FCFA)", format="%.0f"),
             "categorie_mère": st.column_config.TextColumn("Catégorie"),
             "garantie": st.column_config.TextColumn("Garantie"),
             "segment": st.column_config.TextColumn("Segment"),

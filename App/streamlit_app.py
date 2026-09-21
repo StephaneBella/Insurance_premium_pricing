@@ -15,7 +15,7 @@ import streamlit as st
 sys.path.append(str(Path(__file__).resolve().parent))
 
 from tabs import prediction_individuelle, prediction_lot  # noqa: E402
-from utils import CSS_PATH, MODEL_PATH, PREPROCESSOR_PATH, load_artifacts  # noqa: E402
+from utils import CSS_PATH, MODEL_PATH, load_artifacts  # noqa: E402
 
 st.set_page_config(
     page_title="Tarification des primes auto",
@@ -53,15 +53,14 @@ with st.sidebar:
 
     with st.expander("À propos du modèle", icon=":material/model_training:"):
         st.markdown(
-            "- **Algorithme** : Random Forest (hyperparamètres optimisés)\n"
-            "- **Cible** : prime nette de la garantie (FCFA)\n"
-            "- **Prétraitement** : imputation KNN / mode + target encoding"
+            "- **Algorithme** : Random Forest\n"
+            "- **Cible** : prime nette de la garantie (FCFA), log(1 + y)\n"
+            "- **Prétraitement** : imputation médiane / mode + target encoding "
+            "(intégré au pipeline)"
         )
         model_ok = MODEL_PATH.exists()
-        prep_ok = PREPROCESSOR_PATH.exists()
         st.markdown(
-            f"- :material/{'check_circle' if model_ok else 'error'}: Modèle {'chargé' if model_ok else 'introuvable'}\n"
-            f"- :material/{'check_circle' if prep_ok else 'error'}: Préprocesseur {'chargé' if prep_ok else 'introuvable'}"
+            f"- :material/{'check_circle' if model_ok else 'error'}: Modèle {'chargé' if model_ok else 'introuvable'}"
         )
 
     st.html(
@@ -91,7 +90,7 @@ st.html(
 # ---------------------------------------------------------------------------
 
 try:
-    model, preprocessor = load_artifacts()
+    model = load_artifacts()
 except FileNotFoundError as exc:
     st.error(str(exc), icon=":material/error:")
     st.stop()
@@ -104,10 +103,10 @@ tab_individuelle, tab_lot = st.tabs(
 )
 
 with tab_individuelle:
-    prediction_individuelle.render(model, preprocessor)
+    prediction_individuelle.render(model)
 
 with tab_lot:
-    prediction_lot.render(model, preprocessor)
+    prediction_lot.render(model)
 
 st.html(
     '<div class="app-footer">Modèle Random Forest optimisé'

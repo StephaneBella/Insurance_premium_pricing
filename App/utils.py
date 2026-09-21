@@ -1,12 +1,14 @@
 """Fonctions et constantes partagées par l'ensemble de l'application.
 
-Centralise le chargement des artefacts de modélisation (préprocesseur +
-RandomForest), la définition des variables attendues par le modèle et les
-utilitaires de préparation des données (individuelles ou en lot).
+Centralise le chargement du modèle de tarification (pipeline scikit-learn
+autonome incluant prétraitement, encodage et régression), la définition des
+variables attendues et les utilitaires de préparation des données
+(individuelles ou en lot).
 """
 
 from __future__ import annotations
 
+import sys
 import unicodedata
 import warnings
 from io import StringIO
@@ -27,18 +29,42 @@ warnings.filterwarnings(
     category=UserWarning,
 )
 
+
+# ---------------------------------------------------------------------------
+# Compatibilité de désérialisation du pipeline
+# ---------------------------------------------------------------------------
+# Le pipeline `modele_final_SimpleImputer_TargetEncoding_log.pkl` embarque un
+# `TransformedTargetRegressor` dont les fonctions `log_target` /
+# `inverse_log_target` ont été définies dans le module `__main__` du notebook
+# d'entraînement. joblib recherche ces noms dans le module `__main__` courant
+# au moment du chargement : on les y expose donc avant tout `joblib.load`.
+
+
+def log_target(y):
+    return np.log1p(np.maximum(0, y))
+
+
+def inverse_log_target(y):
+    return np.expm1(y)
+
+
+_main_module = sys.modules["__main__"]
+_main_module.log_target = log_target
+_main_module.inverse_log_target = inverse_log_target
+
 # ---------------------------------------------------------------------------
 # Chemins
 # ---------------------------------------------------------------------------
 
 APP_DIR = Path(__file__).resolve().parent
 PROJECT_ROOT = APP_DIR.parent
-MODEL_PATH = PROJECT_ROOT / "Outputs" / "Modelisation" / "rf_optimized.pkl"
-PREPROCESSOR_PATH = PROJECT_ROOT / "Outputs" / "Modelisation" / "preprocessor_optimized.pkl"
+MODEL_PATH = (
+    PROJECT_ROOT / "Outputs" / "Modelisation" / "modele_final_SimpleImputer_TargetEncoding_log.pkl"
+)
 CSS_PATH = APP_DIR / "style.css"
 
 # ---------------------------------------------------------------------------
-# Variables attendues par le préprocesseur / le modèle
+# Variables attendues par le modèle
 # ---------------------------------------------------------------------------
 
 NUM_COLS = [
@@ -46,6 +72,8 @@ NUM_COLS = [
     "duree_garantie_jours",
     "places",
     "puissance",
+    "valeur_neuve",
+    "valeur_venale",
 ]
 
 CAT_COLS = [
@@ -217,17 +245,12 @@ MARQUE_OPTIONS = [
 
 @st.cache_resource(show_spinner="Chargement du modèle de tarification…")
 def load_artifacts():
-    """Charge le préprocesseur et le modèle RandomForest optimisés."""
-    if not PREPROCESSOR_PATH.exists():
-        raise FileNotFoundError(
-            f"Préprocesseur introuvable : {PREPROCESSOR_PATH}"
-        )
+    """Charge le pipeline de tarification (prétraitement + modèle intégrés)."""
     if not MODEL_PATH.exists():
         raise FileNotFoundError(f"Modèle introuvable : {MODEL_PATH}")
 
-    preprocessor = joblib.load(PREPROCESSOR_PATH)
     model = joblib.load(MODEL_PATH)
-    return model, preprocessor
+    return model
 
 
 # ---------------------------------------------------------------------------
@@ -235,12 +258,13 @@ def load_artifacts():
 # ---------------------------------------------------------------------------
 
 
-def predict_premium(model, preprocessor, df: pd.DataFrame) -> np.ndarray:
-    """Applique le préprocesseur puis le modèle et retourne la prime prédite.
+def predict_premium(model, df: pd.DataFrame) -> np.ndarray:
+    """Applique le pipeline (imputation, target encoding, RandomForest) et
+    retourne la prime prédite.
 
-    La cible a été entraînée sous transformation racine carrée : on
-    retransforme donc les prédictions au carré pour revenir à l'échelle
-    d'origine (en FCFA), en s'assurant qu'elles restent positives.
+    Le pipeline entraîne la cible sous transformation logarithmique
+    log(1 + y) via un `TransformedTargetRegressor` : la retransformation
+    exp(y) - 1 est appliquée automatiquement par `predict`.
     """
     missing = [c for c in FEATURE_COLUMNS if c not in df.columns]
     if missing:
@@ -248,9 +272,8 @@ def predict_premium(model, preprocessor, df: pd.DataFrame) -> np.ndarray:
             "Colonnes manquantes pour la prédiction : " + ", ".join(missing)
         )
 
-    X = preprocessor.transform(df[FEATURE_COLUMNS])
-    y_pred_sqrt = np.clip(model.predict(X), 0, None)
-    return np.square(y_pred_sqrt)
+    y_pred = model.predict(df[FEATURE_COLUMNS])
+    return np.clip(y_pred, 0, None)
 
 
 def format_fcfa(value: float) -> str:
@@ -339,6 +362,8 @@ def build_template_csv() -> bytes:
                 "duree_garantie_jours": 365,
                 "places": 5,
                 "puissance": 9,
+                "valeur_neuve": 12000000,
+                "valeur_venale": 7000000,
                 "categorie_mère": "Tourisme (VP)",
                 "garantie": "Dommages",
                 "segment": "GENERALISTE",
@@ -351,6 +376,8 @@ def build_template_csv() -> bytes:
                 "duree_garantie_jours": 180,
                 "places": 4,
                 "puissance": 7,
+                "valeur_neuve": 8000000,
+                "valeur_venale": 2500000,
                 "categorie_mère": "Taxis",
                 "garantie": "Tierce collision",
                 "segment": "GENERALISTE",

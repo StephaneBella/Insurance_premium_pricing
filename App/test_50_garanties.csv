@@ -1,51 +1,51 @@
-﻿contrat_test_id,age_vehicule_annees,duree_garantie_jours,places,puissance,categorie_mère,garantie,segment,typeinter,ville,marque
-TEST-001,15.6,365,30,11,Utilitaire < 3.5T,Recours tiers incendie,SUV_4X4,Courtier,TIKO,BMW
-TEST-002,9.1,90,5,23,Autocars / Bus,Assistance routière,GENERALISTE,Courtier,SANTA,RVI
-TEST-003,17.2,365,60,14,Utilitaire < 3.5T,Dommages,PREMIUM,Bureau Direct,MBOUDA,TVS
-TEST-004,14.1,30,5,18,Taxis,Remorquage,SUV_4X4,Courtier,DOUALA,LIFAN
-TEST-005,2.3,365,5,13,Engins chantier,Vol total + partiel + braquage (TT),DEUX_ROUES,Agent Général,BALENG,CHEVROLET
-TEST-006,19.5,365,9,9,Utilitaire < 3.5T,Tierce collision,DEUX_ROUES,Agent Général,BAFUT,VOLVO
-TEST-007,15.3,365,4,20,Engins chantier,Incendie,GENERALISTE,Agent Général,GAROUA,PONTIAC
-TEST-008,15.8,365,7,24,Utilitaire < 3.5T,Vol total + partiel + braquage (TT),DEUX_ROUES,Bureau Direct,BALI,OPEL
-TEST-009,3.0,270,7,9,Utilitaire < 3.5T,Incendie,GENERALISTE,Courtier,NJOMBE-PENJA,SUZUKI
-TEST-010,9.3,365,15,20,Flotte pro,Tierce collision,POIDS_LOURD,Bureau Direct,BAMENDA,OPEL
-TEST-011,7.7,180,60,9,Ambulances / Funéraire,Transport de personnes,DEUX_ROUES,Bureau Direct,KOUSSÉRI,BLI
-TEST-012,18.6,365,9,19,Utilitaire < 3.5T,Transport de personnes,DEUX_ROUES,Bureau Direct,GAROUA,FOTON
-TEST-013,13.1,365,5,20,Utilitaire > 3.5T,Tierce collision,PREMIUM,Bureau Direct,KUMBO,JIALING
-TEST-014,16.5,270,5,13,2/3 Roues,Incendie,DEUX_ROUES,Bureau Direct,DSCHANG,BAJAJ
-TEST-015,9.1,365,5,19,2/3 Roues,Bris de glace + blocs feux,GENERALISTE,Bureau Direct,DOUALA,TVS
-TEST-016,4.9,365,30,9,Flotte pro,Transport de personnes,SUV_4X4,Courtier,TIKO,MERCEDES
-TEST-017,11.3,30,5,5,Autocars / Bus,Recours / Défense,SUV_4X4,Courtier,MAROUA,NANFAN
-TEST-018,1.7,90,4,6,Taxis,Recours / Défense,PREMIUM,Bureau Direct,BALENG,KIA
-TEST-019,16.6,90,5,13,Engins chantier,Remorquage,GENERALISTE,Bureau Direct,MAROUA,CITROEN
-TEST-020,12.8,30,2,22,Flotte pro,Avance sur recours,POIDS_LOURD,Agent Général,SANTA,HINO
-TEST-021,15.3,270,4,6,Utilitaire > 3.5T,Recours tiers incendie,PREMIUM,Courtier,KUMBO,JEEP
-TEST-022,7.4,365,2,13,Tourisme (VP),Tierce collision,POIDS_LOURD,Courtier,NDOP,RENAULT
-TEST-023,19.4,365,15,18,Utilitaire < 3.5T,Accident conducteur,SUV_4X4,Courtier,FOUMBAN,FORD
-TEST-024,17.9,270,15,8,2/3 Roues,Remorquage,PREMIUM,Agent Général,FOUMBOT,HAOJUE
-TEST-025,15.7,365,9,19,Autocars / Bus,Tracking,DEUX_ROUES,Agent Général,BALI,LAND ROVER
-TEST-026,4.3,365,5,10,Autocars / Bus,Bris de glace + blocs feux,GENERALISTE,Bureau Direct,NDJAMENA,LAND ROVER
-TEST-027,9.6,30,15,20,Autocars / Bus,Bris de glace + blocs feux,POIDS_LOURD,Courtier,NJOMBE-PENJA,ROYAL
-TEST-028,1.4,365,4,16,Ambulances / Funéraire,Dommages,POIDS_LOURD,Courtier,DOUALA,VOLKSWAGEN
-TEST-029,3.5,365,60,15,Tourisme (VP),Tierce collision,PREMIUM,Bureau Direct,BATIBO,ROYAL
-TEST-030,13.8,365,7,7,Tourisme (VP),Vol total + partiel + braquage (TT),PREMIUM,Courtier,BAMENDA,ROYAL
-TEST-031,15.0,365,60,13,Utilitaire > 3.5T,Vol total + partiel + braquage (TT),GENERALISTE,Bureau Direct,KRIBI,HINO
-TEST-032,19.4,365,4,21,Autocars / Bus,Vol total,DEUX_ROUES,Courtier,NJOMBE-PENJA,MITSUBISHI
-TEST-033,6.9,30,5,4,Engins chantier,Incendie,DEUX_ROUES,Courtier,EBOLOWA,RENAULT
-TEST-034,7.7,365,9,19,Autocars / Bus,Assistance routière,PREMIUM,Bureau Direct,NDOP,CHEVROLET
-TEST-035,9.7,365,5,14,Autocars / Bus,Vol total + partiel,GENERALISTE,Agent Général,FOUMBOT,ISUZU
-TEST-036,4.2,180,5,19,2/3 Roues,Assistance routière,GENERALISTE,Bureau Direct,BERTOUA,RENAULT
-TEST-037,3.0,365,4,17,Utilitaire < 3.5T,Tracking,GENERALISTE,Agent Général,BUÉA,FIAT
-TEST-038,9.8,30,5,13,Flotte pro,Recours tiers incendie,DEUX_ROUES,Courtier,BAFANG,BMW
-TEST-039,4.9,180,5,10,Flotte pro,Bris de glace,DEUX_ROUES,Bureau Direct,NDJAMENA,PONTIAC
-TEST-040,13.6,270,5,17,Autocars / Bus,Tracking,GENERALISTE,Agent Général,BALENG,HYUNDAI
-TEST-041,9.0,730,9,6,Auto-école,Transport de personnes,POIDS_LOURD,Courtier,SANTA,HOWO
-TEST-042,16.7,90,9,16,Utilitaire > 3.5T,Incendie,GENERALISTE,Bureau Direct,NKAMBÉ,KIA
-TEST-043,14.2,180,9,5,2/3 Roues,Accident conducteur,PREMIUM,Bureau Direct,KUMBO,FORD
-TEST-044,6.6,270,5,17,Taxis,Vol total + partiel + braquage,SUV_4X4,Agent Général,BALENG,MITSUBISHI
-TEST-045,16.7,730,60,17,Flotte pro,Remorquage,POIDS_LOURD,Agent Général,KRIBI,HAOJUE
-TEST-046,16.2,365,2,5,Flotte pro,Bris de glace + blocs feux,DEUX_ROUES,Agent Général,DSCHANG,NISSAN
-TEST-047,8.1,30,5,19,Auto-école,Tracking,GENERALISTE,Bureau Direct,BAMENDA,SSANGYONG
-TEST-048,6.1,90,4,12,Autocars / Bus,Remorquage,GENERALISTE,Courtier,KUMBA,HINO
-TEST-049,13.8,365,5,20,Utilitaire > 3.5T,Bris de glace,PREMIUM,Agent Général,SANTA,DODGE
-TEST-050,3.2,30,60,4,Tourisme (VP),Bris de glace,PREMIUM,Bureau Direct,FOUMBAN,SINOTRUCK
+contrat_test_id,age_vehicule_annees,duree_garantie_jours,places,puissance,valeur_neuve,valeur_venale,categorie_mère,garantie,segment,typeinter,ville,marque
+TEST-001,15.6,365,30,11,24081788,3610000,Utilitaire < 3.5T,Recours tiers incendie,SUV_4X4,Courtier,TIKO,BMW
+TEST-002,9.1,90,5,23,16315092,4440000,Autocars / Bus,Assistance routière,GENERALISTE,Courtier,SANTA,RVI
+TEST-003,17.2,365,60,14,38788921,5820000,Utilitaire < 3.5T,Dommages,PREMIUM,Bureau Direct,MBOUDA,TVS
+TEST-004,14.1,30,5,18,29735830,4460000,Taxis,Remorquage,SUV_4X4,Courtier,DOUALA,LIFAN
+TEST-005,2.3,365,5,13,29301898,23910000,Engins chantier,Vol total + partiel + braquage (TT),DEUX_ROUES,Agent Général,BALENG,CHEVROLET
+TEST-006,19.5,365,9,9,32210711,4830000,Utilitaire < 3.5T,Tierce collision,DEUX_ROUES,Agent Général,BAFUT,VOLVO
+TEST-007,15.3,365,4,20,26981428,4050000,Engins chantier,Incendie,GENERALISTE,Agent Général,GAROUA,PONTIAC
+TEST-008,15.8,365,7,24,34632483,5190000,Utilitaire < 3.5T,Vol total + partiel + braquage (TT),DEUX_ROUES,Bureau Direct,BALI,OPEL
+TEST-009,3.0,270,7,9,12628519,9600000,Utilitaire < 3.5T,Incendie,GENERALISTE,Courtier,NJOMBE-PENJA,SUZUKI
+TEST-010,9.3,365,15,20,24249687,6210000,Flotte pro,Tierce collision,POIDS_LOURD,Bureau Direct,BAMENDA,OPEL
+TEST-011,7.7,180,60,9,24300885,9330000,Ambulances / Funéraire,Transport de personnes,DEUX_ROUES,Bureau Direct,KOUSSÉRI,BLI
+TEST-012,18.6,365,9,19,7981505,1200000,Utilitaire < 3.5T,Transport de personnes,DEUX_ROUES,Bureau Direct,GAROUA,FOTON
+TEST-013,13.1,365,5,20,16953367,2540000,Utilitaire > 3.5T,Tierce collision,PREMIUM,Bureau Direct,KUMBO,JIALING
+TEST-014,16.5,270,5,13,21544107,3230000,2/3 Roues,Incendie,DEUX_ROUES,Bureau Direct,DSCHANG,BAJAJ
+TEST-015,9.1,365,5,19,7521373,2050000,2/3 Roues,Bris de glace + blocs feux,GENERALISTE,Bureau Direct,DOUALA,TVS
+TEST-016,4.9,365,30,9,6344769,3860000,Flotte pro,Transport de personnes,SUV_4X4,Courtier,TIKO,MERCEDES
+TEST-017,11.3,30,5,5,36657787,5500000,Autocars / Bus,Recours / Défense,SUV_4X4,Courtier,MAROUA,NANFAN
+TEST-018,1.7,90,4,6,37817184,32670000,Taxis,Recours / Défense,PREMIUM,Bureau Direct,BALENG,KIA
+TEST-019,16.6,90,5,13,34642059,5200000,Engins chantier,Remorquage,GENERALISTE,Bureau Direct,MAROUA,CITROEN
+TEST-020,12.8,30,2,22,12784633,1920000,Flotte pro,Avance sur recours,POIDS_LOURD,Agent Général,SANTA,HINO
+TEST-021,15.3,270,4,6,33349564,5000000,Utilitaire > 3.5T,Recours tiers incendie,PREMIUM,Courtier,KUMBO,JEEP
+TEST-022,7.4,365,2,13,34943512,14260000,Tourisme (VP),Tierce collision,POIDS_LOURD,Courtier,NDOP,RENAULT
+TEST-023,19.4,365,15,18,13642490,2050000,Utilitaire < 3.5T,Accident conducteur,SUV_4X4,Courtier,FOUMBAN,FORD
+TEST-024,17.9,270,15,8,24498555,3670000,2/3 Roues,Remorquage,PREMIUM,Agent Général,FOUMBOT,HAOJUE
+TEST-025,15.7,365,9,19,33008271,4950000,Autocars / Bus,Tracking,DEUX_ROUES,Agent Général,BALI,LAND ROVER
+TEST-026,4.3,365,5,10,15648637,10270000,Autocars / Bus,Bris de glace + blocs feux,GENERALISTE,Bureau Direct,NDJAMENA,LAND ROVER
+TEST-027,9.6,30,15,20,19861870,4610000,Autocars / Bus,Bris de glace + blocs feux,POIDS_LOURD,Courtier,NJOMBE-PENJA,ROYAL
+TEST-028,1.4,365,4,16,35049003,31120000,Ambulances / Funéraire,Dommages,POIDS_LOURD,Courtier,DOUALA,VOLKSWAGEN
+TEST-029,3.5,365,60,15,5428388,3910000,Tourisme (VP),Tierce collision,PREMIUM,Bureau Direct,BATIBO,ROYAL
+TEST-030,13.8,365,7,7,39217478,5880000,Tourisme (VP),Vol total + partiel + braquage (TT),PREMIUM,Courtier,BAMENDA,ROYAL
+TEST-031,15.0,365,60,13,13959014,2090000,Utilitaire > 3.5T,Vol total + partiel + braquage (TT),GENERALISTE,Bureau Direct,KRIBI,HINO
+TEST-032,19.4,365,4,21,23193880,3480000,Autocars / Bus,Vol total,DEUX_ROUES,Courtier,NJOMBE-PENJA,MITSUBISHI
+TEST-033,6.9,30,5,4,6385357,2860000,Engins chantier,Incendie,DEUX_ROUES,Courtier,EBOLOWA,RENAULT
+TEST-034,7.7,365,9,19,36237768,13920000,Autocars / Bus,Assistance routière,PREMIUM,Bureau Direct,NDOP,CHEVROLET
+TEST-035,9.7,365,5,14,4465689,1000000,Autocars / Bus,Vol total + partiel,GENERALISTE,Agent Général,FOUMBOT,ISUZU
+TEST-036,4.2,180,5,19,19845364,13180000,2/3 Roues,Assistance routière,GENERALISTE,Bureau Direct,BERTOUA,RENAULT
+TEST-037,3.0,365,4,17,31563547,23990000,Utilitaire < 3.5T,Tracking,GENERALISTE,Agent Général,BUÉA,FIAT
+TEST-038,9.8,30,5,13,14392366,3110000,Flotte pro,Recours tiers incendie,DEUX_ROUES,Courtier,BAFANG,BMW
+TEST-039,4.9,180,5,10,5669995,3450000,Flotte pro,Bris de glace,DEUX_ROUES,Bureau Direct,NDJAMENA,PONTIAC
+TEST-040,13.6,270,5,17,24775111,3720000,Autocars / Bus,Tracking,GENERALISTE,Agent Général,BALENG,HYUNDAI
+TEST-041,9.0,730,9,6,16479854,4610000,Auto-école,Transport de personnes,POIDS_LOURD,Courtier,SANTA,HOWO
+TEST-042,16.7,90,9,16,9397986,1410000,Utilitaire > 3.5T,Incendie,GENERALISTE,Bureau Direct,NKAMBÉ,KIA
+TEST-043,14.2,180,9,5,16187277,2430000,2/3 Roues,Accident conducteur,PREMIUM,Bureau Direct,KUMBO,FORD
+TEST-044,6.6,270,5,17,4870928,2300000,Taxis,Vol total + partiel + braquage,SUV_4X4,Agent Général,BALENG,MITSUBISHI
+TEST-045,16.7,730,60,17,29939239,4490000,Flotte pro,Remorquage,POIDS_LOURD,Agent Général,KRIBI,HAOJUE
+TEST-046,16.2,365,2,5,26027075,3900000,Flotte pro,Bris de glace + blocs feux,DEUX_ROUES,Agent Général,DSCHANG,NISSAN
+TEST-047,8.1,30,5,19,17091261,6020000,Auto-école,Tracking,GENERALISTE,Bureau Direct,BAMENDA,SSANGYONG
+TEST-048,6.1,90,4,12,22082629,11310000,Autocars / Bus,Remorquage,GENERALISTE,Courtier,KUMBA,HINO
+TEST-049,13.8,365,5,20,23687413,3550000,Utilitaire > 3.5T,Bris de glace,PREMIUM,Agent Général,SANTA,DODGE
+TEST-050,3.2,30,60,4,25335235,18850000,Tourisme (VP),Bris de glace,PREMIUM,Bureau Direct,FOUMBAN,SINOTRUCK

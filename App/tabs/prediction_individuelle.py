@@ -21,7 +21,7 @@ from utils import (
 )
 
 
-def render(model, preprocessor) -> None:
+def render(model) -> None:
     st.html(
         """
         <div class="section-card">
@@ -55,6 +55,13 @@ def render(model, preprocessor) -> None:
                 icon=":material/calendar_month:",
                 help="Âge du véhicule à la date d'effet de la garantie.",
             )
+            valeur_neuve = st.number_input(
+                "Valeur à neuf (FCFA)",
+                min_value=0.0,
+                value=12_000_000.0,
+                step=100_000.0,
+                icon=":material/sell:",
+            )
         with col2:
             segment = st.segmented_control(
                 "Segment",
@@ -76,6 +83,14 @@ def render(model, preprocessor) -> None:
                 value=9.0,
                 step=1.0,
                 icon=":material/bolt:",
+            )
+            valeur_venale = st.number_input(
+                "Valeur vénale (FCFA)",
+                min_value=0.0,
+                value=7_000_000.0,
+                step=100_000.0,
+                icon=":material/payments:",
+                help="Valeur marchande actuelle du véhicule.",
             )
 
         st.markdown("##### :material/description: Garantie & souscription")
@@ -128,6 +143,8 @@ def render(model, preprocessor) -> None:
                 "duree_garantie_jours": duree_garantie,
                 "places": places,
                 "puissance": puissance,
+                "valeur_neuve": valeur_neuve,
+                "valeur_venale": valeur_venale,
                 "categorie_mère": categorie_mere,
                 "garantie": garantie,
                 "segment": segment,
@@ -140,7 +157,7 @@ def render(model, preprocessor) -> None:
 
     with st.spinner("Calcul de la prime en cours…"):
         try:
-            prediction = predict_premium(model, preprocessor, payload)[0]
+            prediction = predict_premium(model, payload)[0]
         except Exception as exc:  # noqa: BLE001 - affichage utilisateur
             st.error(f"Erreur lors du calcul de la prime : {exc}", icon=":material/error:")
             return
