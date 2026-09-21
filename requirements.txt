@@ -1,6 +1,6 @@
-joblib
-numpy
-pandas
-streamlit
-scikit-learn
-category_encoders
+joblib==1.5.1
+numpy==2.2.3
+pandas==2.2.3
+streamlit==1.61.1
+scikit-learn==1.7.2
+category_encoders==2.8.1
