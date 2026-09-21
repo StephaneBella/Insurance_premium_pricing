@@ -1,0 +1,35 @@
+[theme]
+base = "light"
+primaryColor = "#0284C7"
+backgroundColor = "#FFFFFF"
+secondaryBackgroundColor = "#F0F9FF"
+textColor = "#0F172A"
+linkColor = "#0284C7"
+borderColor = "#BAE6FD"
+
+redColor = "#DC2626"
+orangeColor = "#EA580C"
+yellowColor = "#EAB308"
+greenColor = "#16A34A"
+blueColor = "#0284C7"
+grayColor = "#64748B"
+
+baseRadius = "10px"
+buttonRadius = "10px"
+showWidgetBorder = true
+showSidebarBorder = true
+font = "Inter:https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+headingFont = "Inter:https://fonts.googleapis.com/css2?family=Inter:wght@600;700&display=swap"
+
+[theme.sidebar]
+backgroundColor = "#F0F9FF"
+secondaryBackgroundColor = "#E0F2FE"
+textColor = "#0F172A"
+primaryColor = "#0284C7"
+borderColor = "#BAE6FD"
+
+[server]
+runOnSave = true
+
+[client]
+toolbarMode = "minimal"

@@ -1,0 +1,256 @@
+/* ============================================================
+   Outil d'aide à la décision — Tarification des primes auto
+   Thème : bleu ciel / blanc / jaune
+   ============================================================ */
+
+/* Icône utilisable dans du HTML brut (st.markdown/st.html), là où le
+   raccourci Streamlit ":material/xxx:" n'est pas interprété (il ne l'est
+   qu'à l'intérieur de texte Markdown, pas dans des balises HTML imbriquées).
+   Réutilise la police "Material Symbols Rounded" déjà chargée par Streamlit
+   pour ses propres icônes ; le !important est nécessaire pour l'emporter
+   sur la règle de typographie globale de l'application (plus spécifique).
+   Utilisation : <span class="mi">directions_car</span> */
+.mi {
+    font-family: 'Material Symbols Rounded' !important;
+    font-weight: normal;
+    font-style: normal;
+    font-size: 1.3em;
+    line-height: 1;
+    letter-spacing: normal;
+    text-transform: none;
+    display: inline-block;
+    white-space: nowrap;
+    word-wrap: normal;
+    direction: ltr;
+    vertical-align: -0.22em;
+    font-variation-settings: 'FILL' 0, 'wght' 500, 'GRAD' 0, 'opsz' 24 !important;
+}
+
+:root {
+    --sky-50:  #F0F9FF;
+    --sky-100: #E0F2FE;
+    --sky-200: #BAE6FD;
+    --sky-400: #38BDF8;
+    --sky-500: #0EA5E9;
+    --sky-600: #0284C7;
+    --sky-700: #0369A1;
+    --yellow-300: #FDE047;
+    --yellow-400: #FACC15;
+    --yellow-500: #EAB308;
+    --yellow-900: #713F12;
+    --ink-900: #0F172A;
+    --slate-500: #64748B;
+    --white: #FFFFFF;
+}
+
+/* ---------- Animations ---------- */
+
+@keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(14px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+}
+
+@keyframes pulseGlow {
+    0%, 100% { box-shadow: 0 8px 24px rgba(234, 179, 8, 0.18); }
+    50%      { box-shadow: 0 8px 32px rgba(234, 179, 8, 0.38); }
+}
+
+@keyframes popIn {
+    0%   { opacity: 0; transform: scale(0.92); }
+    70%  { opacity: 1; transform: scale(1.02); }
+    100% { opacity: 1; transform: scale(1); }
+}
+
+/* ---------- Header banner ---------- */
+/* Bandeau léger (le logo de l'entreprise est affiché séparément via
+   st.logo, au-dessus) : une carte claire avec un simple liseré d'accent,
+   plutôt qu'un gros bandeau coloré qui entrerait en concurrence avec lui. */
+
+.app-header {
+    background: var(--white);
+    border: 1px solid var(--sky-200);
+    border-left: 5px solid var(--sky-600);
+    border-radius: 14px;
+    padding: 1.3rem 1.8rem;
+    margin-bottom: 1.4rem;
+    box-shadow: 0 6px 20px rgba(2, 132, 199, 0.08);
+    animation: fadeInUp 0.5s ease;
+}
+
+.app-header .eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    background: #FEF9C3;
+    color: var(--yellow-900);
+    border: 1px solid var(--yellow-400);
+    border-radius: 999px;
+    padding: 0.22rem 0.8rem;
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    margin-bottom: 0.7rem;
+    animation: fadeInUp 0.5s ease;
+}
+
+.app-header h1 {
+    color: var(--ink-900);
+    font-size: 1.65rem;
+    font-weight: 700;
+    margin: 0 0 0.35rem 0;
+    animation: fadeInUp 0.6s ease;
+}
+
+.app-header p {
+    color: var(--slate-500);
+    font-size: 0.98rem;
+    max-width: 640px;
+    margin: 0;
+    animation: fadeInUp 0.75s ease;
+}
+
+/* ---------- Generic surface cards ---------- */
+
+.section-card {
+    background: var(--white);
+    border: 1px solid var(--sky-200);
+    border-radius: 16px;
+    padding: 1.4rem 1.6rem;
+    animation: fadeInUp 0.5s ease;
+    margin-bottom: 1rem;
+}
+
+.section-card h4 {
+    margin-top: 0;
+    color: var(--sky-700);
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+/* ---------- Prediction result card ---------- */
+
+.result-card {
+    background: linear-gradient(135deg, var(--sky-50) 0%, var(--white) 65%);
+    border: 1px solid var(--sky-200);
+    border-left: 6px solid var(--yellow-500);
+    border-radius: 18px;
+    padding: 1.6rem 2rem;
+    margin: 0.4rem 0 1.2rem 0;
+    animation: popIn 0.5s ease, pulseGlow 2.6s ease-in-out infinite;
+}
+
+.result-card .result-label {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    font-size: 0.78rem;
+    font-weight: 600;
+    color: var(--sky-700);
+    margin-bottom: 0.3rem;
+}
+
+.result-card .result-amount {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--ink-900);
+    line-height: 1.15;
+}
+
+.result-card .result-amount .currency {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--sky-600);
+    margin-left: 0.4rem;
+}
+
+.result-card .result-caption {
+    margin-top: 0.5rem;
+    color: var(--slate-500);
+    font-size: 0.88rem;
+}
+
+/* ---------- Badges / pills ---------- */
+
+.badge-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    background: #FEF9C3;
+    color: var(--yellow-900);
+    border: 1px solid var(--yellow-400);
+    padding: 0.28rem 0.85rem;
+    border-radius: 999px;
+    font-size: 0.78rem;
+    font-weight: 600;
+    animation: fadeIn 0.6s ease;
+}
+
+.badge-pill.badge-sky {
+    background: var(--sky-100);
+    color: var(--sky-700);
+    border-color: var(--sky-200);
+}
+
+/* ---------- Footer ---------- */
+
+.app-footer {
+    text-align: center;
+    color: var(--slate-500);
+    font-size: 0.8rem;
+    padding: 1.4rem 0 0.6rem 0;
+    animation: fadeIn 1s ease;
+}
+
+.app-footer .dot {
+    color: var(--yellow-500);
+    margin: 0 0.4rem;
+}
+
+/* ---------- Widget polish ---------- */
+
+.stButton > button,
+.stFormSubmitButton > button,
+.stDownloadButton > button {
+    transition: transform 0.18s ease, box-shadow 0.18s ease;
+}
+
+.stButton > button:hover,
+.stFormSubmitButton > button:hover,
+.stDownloadButton > button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 22px rgba(2, 132, 199, 0.25);
+}
+
+.stTabs [data-baseweb="tab-list"] {
+    gap: 0.4rem;
+}
+
+.stTabs [data-baseweb="tab-panel"] {
+    animation: fadeIn 0.4s ease;
+}
+
+[data-testid="stMetric"] {
+    background: var(--sky-50);
+    border: 1px solid var(--sky-200);
+    border-radius: 14px;
+    padding: 0.9rem 1.1rem 0.6rem 1.1rem;
+    transition: transform 0.18s ease, box-shadow 0.18s ease;
+}
+
+[data-testid="stMetric"]:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 22px rgba(2, 132, 199, 0.15);
+}
+
+[data-testid="stFileUploaderDropzone"] {
+    border-radius: 14px;
+}
