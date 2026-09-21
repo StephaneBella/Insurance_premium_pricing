@@ -33,7 +33,7 @@ warnings.filterwarnings(
 # ---------------------------------------------------------------------------
 # Compatibilité de désérialisation du pipeline
 # ---------------------------------------------------------------------------
-# Le pipeline `modele_final_SimpleImputer_TargetEncoding_log.pkl` embarque un
+# Le pipeline de tarification (cf. MODEL_PATH) embarque un
 # `TransformedTargetRegressor` dont les fonctions `log_target` /
 # `inverse_log_target` ont été définies dans le module `__main__` du notebook
 # d'entraînement. joblib recherche ces noms dans le module `__main__` courant
@@ -59,7 +59,7 @@ _main_module.inverse_log_target = inverse_log_target
 APP_DIR = Path(__file__).resolve().parent
 PROJECT_ROOT = APP_DIR.parent
 MODEL_PATH = (
-    PROJECT_ROOT / "Outputs" / "Modelisation" / "modele_final_SimpleImputer_TargetEncoding_log.pkl"
+    PROJECT_ROOT / "Outputs" / "Modelisation" / "rf_model_log.pkl"
 )
 CSS_PATH = APP_DIR / "style.css"
 
