@@ -37,21 +37,6 @@ MODEL_PATH = PROJECT_ROOT / "Outputs" / "Modelisation" / "rf_optimized.pkl"
 PREPROCESSOR_PATH = PROJECT_ROOT / "Outputs" / "Modelisation" / "preprocessor_optimized.pkl"
 CSS_PATH = APP_DIR / "style.css"
 
-# Noms de fichiers acceptés pour le logo de l'entreprise, déposé par
-# l'utilisateur à la racine du dossier de l'application (à côté de
-# streamlit_app.py).
-LOGO_CANDIDATES = ("logo.png", "logo.jpg", "logo.jpeg", "logo.svg", "logo.webp")
-
-
-def find_logo() -> Path | None:
-    """Retourne le chemin du logo de l'entreprise s'il a été déposé dans le
-    dossier de l'application, sinon None."""
-    for name in LOGO_CANDIDATES:
-        candidate = APP_DIR / name
-        if candidate.exists():
-            return candidate
-    return None
-
 # ---------------------------------------------------------------------------
 # Variables attendues par le préprocesseur / le modèle
 # ---------------------------------------------------------------------------

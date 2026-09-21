@@ -15,7 +15,7 @@ import streamlit as st
 sys.path.append(str(Path(__file__).resolve().parent))
 
 from tabs import prediction_individuelle, prediction_lot  # noqa: E402
-from utils import CSS_PATH, MODEL_PATH, PREPROCESSOR_PATH, find_logo, load_artifacts  # noqa: E402
+from utils import CSS_PATH, MODEL_PATH, PREPROCESSOR_PATH, load_artifacts  # noqa: E402
 
 st.set_page_config(
     page_title="Tarification des primes auto",
@@ -73,28 +73,18 @@ with st.sidebar:
 # En-tête principal
 # ---------------------------------------------------------------------------
 
-HEADER_HTML = """
-<div class="app-header">
-    <span class="eyebrow"><span class="mi">verified</span> Outil d'aide à la décision</span>
-    <h1>Tarification des primes d'assurance automobile</h1>
-    <p>
-        Estimez instantanément la prime d'une nouvelle garantie, unitairement
-        ou en lot, à partir du modèle de tarification optimisé.
-    </p>
-</div>
-"""
-
-# Logo de l'entreprise : à déposer sous App/logo.png (ou .jpg/.jpeg/.svg/.webp).
-# Affiché ici, dans le contenu principal (pas dans la sidebar), en grand format.
-logo_path = find_logo()
-if logo_path:
-    col_logo, col_header = st.columns([1, 5], vertical_alignment="center")
-    with col_logo:
-        st.image(str(logo_path), width=128)
-    with col_header:
-        st.html(HEADER_HTML)
-else:
-    st.html(HEADER_HTML)
+st.html(
+    """
+    <div class="app-header">
+        <span class="eyebrow"><span class="mi">verified</span> Outil d'aide à la décision</span>
+        <h1>Tarification des primes d'assurance automobile</h1>
+        <p>
+            Estimez instantanément la prime d'une nouvelle garantie, unitairement
+            ou en lot, à partir du modèle de tarification optimisé.
+        </p>
+    </div>
+    """
+)
 
 # ---------------------------------------------------------------------------
 # Chargement du modèle
